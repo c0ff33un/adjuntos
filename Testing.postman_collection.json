@@ -1,0 +1,1082 @@
+{
+	"info": {
+		"_postman_id": "775deffc-4e48-413f-8c32-cc8efbc547e0",
+		"name": "Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account_managment",
+			"item": [
+				{
+					"name": "Create Account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user[email]",
+									"value": "edwmapa@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "user[handle]",
+									"value": "edwmapa",
+									"type": "text"
+								},
+								{
+									"key": "user[password]",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "user[birthday]",
+									"value": "1998-02-28",
+									"type": "text"
+								},
+								{
+									"key": "user[avatar]",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n    \t\"email\":\"edwmapa@gmail.com\",\n    \t\"password\":\"123456\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User stats",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MzAzMDA0MiwiZXhwIjoxNTYzMTE2NDQyLCJqdGkiOiJlNGI5MWU1Mi0yMTYxLTQzMWUtOTljZS02NzQ5NWQ1MTk1ZDgifQ.329nW-mANTWdz59oBAJSDGa5G0Axi1WYbTdQl9l13FI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/stats.pdf",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"stats.pdf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User certificate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImlhdCI6MTU2MjkwMzc0OSwiZXhwIjoxNTYyOTkwMTQ5LCJqdGkiOiIwNzc4NGY5YS02Njg1LTQ0YjAtYjlmMy0xZWViNzA3NjI3ZmYifQ.ySaxercvhkzO1grtSewpJ3bjSNYjFZTAnSPKtvs5hRo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/certificate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"certificate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Memes",
+			"item": [
+				{
+					"name": "Auth Required",
+					"item": [
+						{
+							"name": "create_meme",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImlhdCI6MTU2MDQzNTM4NiwiZXhwIjoxNTYwNTIxNzg2LCJqdGkiOiIxZDg2ZWI1Yy00MWU0LTQxOWUtYjk2OC03OTdmZjU3MDk2MTcifQ.hu71GhrFXMnPPYTmnmQ9rLISDqrd_kpolfkM1wb3f8I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "meme[image]",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/user/memes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"memes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_index_memes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImlhdCI6MTU2MDQ3MDg2NywiZXhwIjoxNTYwNTU3MjY3LCJqdGkiOiJjNWU1MDI4MS1iZjliLTQ1MjQtOTgxYS0xZTA2NjhlZjAxODEifQ.Iq4KqhDRybI03PF7glLRkqG-Oc1y_VBR4BsarCvmUcY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/memes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"memes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_update_meme",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImlhdCI6MTU2MDQzNTM4NiwiZXhwIjoxNTYwNTIxNzg2LCJqdGkiOiIxZDg2ZWI1Yy00MWU0LTQxOWUtYjk2OC03OTdmZjU3MDk2MTcifQ.hu71GhrFXMnPPYTmnmQ9rLISDqrd_kpolfkM1wb3f8I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "meme[image]",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/user/memes/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"memes",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_destroy_meme",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImlhdCI6MTU2MDQzNTM4NiwiZXhwIjoxNTYwNTIxNzg2LCJqdGkiOiIxZDg2ZWI1Yy00MWU0LTQxOWUtYjk2OC03OTdmZjU3MDk2MTcifQ.hu71GhrFXMnPPYTmnmQ9rLISDqrd_kpolfkM1wb3f8I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/memes/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"memes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_comment_meme",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"comment\": {\n        \"body\": \"this is the real life!\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{url}}/memes/1/comments",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"memes",
+										"1",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_edit_comment_meme",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"comment\": {\n        \"body\": \"this is the\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{url}}/memes/1/comments/31",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"memes",
+										"1",
+										"comments",
+										"31"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_delete_comment_meme",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/memes/1/comments/31",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"memes",
+										"1",
+										"comments",
+										"31"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_meme_react",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reaction\": {\n        \"reaction_type\": 1\n    }\n}"
+								},
+								"url": {
+									"raw": "{{url}}/memes/3/reactions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"memes",
+										"3",
+										"reactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_meme_update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reaction\": {\n        \"reaction_type\": 3\n    }\n}"
+								},
+								"url": {
+									"raw": "{{url}}/memes/1/reactions/12",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"memes",
+										"1",
+										"reactions",
+										"12"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_meme_destroy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/memes/1/reactions/12",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"memes",
+										"1",
+										"reactions",
+										"12"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "by_id_user_index_memes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/1/memes?page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"memes"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "by_id_show_meme",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/memes/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"memes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "by_id_show_meme_comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/memes/1/comments?page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"memes",
+								"1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "best",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/memes/best",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"memes",
+								"best"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/memes/hot",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"memes",
+								"hot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newest",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/memes/newest",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"memes",
+								"newest"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Templates",
+			"item": []
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Auth Required",
+					"item": [
+						{
+							"name": "create_post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"post\": {\n    \t\"body\": \"this is a new post\",\n    \t\"post_memes_attributes\": [\n    \t\t{\"meme_id\":1,\"body\":\"jajaja\"},\n    \t\t{\"meme_id\":2,\"body\":\"jajaja\"}\n\t\t]\n    }\n}"
+								},
+								"url": {
+									"raw": "{{url}}/user/posts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"post\": {\n    \t\"body\": \"this is a new post\",\n    \t\"post_memes_attributes\": [\n    \t\t{\"id\":20, \"meme_id\":1,\"body\":\"jass\"}\n\t\t]\n    }\n}"
+								},
+								"url": {
+									"raw": "{{url}}/user/posts/23",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"posts",
+										"23"
+									]
+								},
+								"description": "* Nota, el id requerido es el de post_meme.\n* El tambien se puede actualizar el meme.\n"
+							},
+							"response": []
+						},
+						{
+							"name": "destroy_post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/user/posts/23",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"posts",
+										"23"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_index_posts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/posts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_comment_post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"comment\": {\n        \"body\": \"this is the real life!\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{url}}/posts/1/comments",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"posts",
+										"1",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_edit_comment_post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"comment\": {\n        \"body\": \"this is the\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{url}}/posts/1/comments/31",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"posts",
+										"1",
+										"comments",
+										"31"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logged_user_delete_comment_post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImlhdCI6MTU2MDYzNjM0MiwiZXhwIjoxNTYwNzIyNzQyLCJqdGkiOiIxNDU2M2E5Zi1hNTdiLTQ4MjQtOTA3YS01MDkyNTYwNTg0MDEifQ.7rEDegVgjWBsqfQ_V0ITLlW7WzeUPSnIqy8JP3Q49g8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/posts/1/comments/31",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"posts",
+										"1",
+										"comments",
+										"31"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "by_id_user_index_posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/1/posts?page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "best",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/posts/best",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"posts",
+								"best"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/posts/hot",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"posts",
+								"hot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newest",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/posts/hot",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"posts",
+								"hot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "by_id_show_post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/posts/4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"posts",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "by_id_show_posts_comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/posts/1/comments?page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"posts",
+								"1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "eba71d19-048c-49a9-88ae-0cd4888242b0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "01b6fe5f-ec16-4597-928b-d841bf3c1545",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "b9236824-d47b-4908-b8e6-5ac1c2d6382c",
+			"key": "url",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}
